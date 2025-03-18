@@ -21,14 +21,14 @@ document.getElementById("verify-btn").addEventListener("click", function () {
     let btn = document.getElementById("verify-btn");
     btn.classList.add("expand"); // Make the button bigger
 
-    let texts = ["Loading.", "Loading..", "Loading..."];
+    let texts = ["Loading", "Loading.", "Loading..", "Loading..."];
     let counter = 0;
 
     let interval = setInterval(() => {
         btn.innerText = texts[counter % texts.length];
         counter++;
 
-        if (counter === Math.floor(Math.random() * 3) + 3) { // Random between 3-5 sec
+        if (counter === Math.floor(Math.random() * 2) + 3) { // Random between 3-5 sec
             clearInterval(interval);
             btn.innerText = "עשיתם אימות בהצלחה";
             setTimeout(() => {
