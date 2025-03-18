@@ -5,6 +5,10 @@ document.getElementById("start-btn").addEventListener("click", function () {
     // Show main screen
     document.getElementById("main-screen").classList.remove("hidden");
 
+    // Show verification text & button
+    document.getElementById("verification-text").classList.remove("hidden");
+    document.getElementById("verify-btn").classList.remove("hidden");
+
     // Play music
     let audio = document.getElementById("audio");
     audio.play();
