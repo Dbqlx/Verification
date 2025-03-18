@@ -47,7 +47,7 @@ body {
 /* Bigger Verification Text */
 #verification-text {
     color: white;
-    font-size: 60px;
+    font-size: 120px;
     position: absolute;
     top: 10%;
 }
@@ -76,8 +76,8 @@ body {
 
 /* Slide off animation */
 .slide-down {
-    transform: translateY(1200%);
-    transition: transform 1s ease-in-out;
+    transform: translateY(1500%);
+    transition: transform 2s ease-in-out;
 }
 
 /* Snow Effect */
