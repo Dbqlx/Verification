@@ -1,10 +1,15 @@
 document.getElementById("start-btn").addEventListener("click", function () {
-    document.getElementById("start-screen").classList.add("hidden");
+    // Remove start screen
+    document.getElementById("start-screen").remove();
+
+    // Show main screen
     document.getElementById("main-screen").classList.remove("hidden");
 
+    // Play music
     let audio = document.getElementById("audio");
     audio.play();
 
+    // Start Snow Effect
     startSnow();
 });
 
