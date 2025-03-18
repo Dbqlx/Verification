@@ -1,0 +1,50 @@
+document.getElementById("start-btn").addEventListener("click", function () {
+    document.getElementById("start-screen").classList.add("hidden");
+    document.getElementById("main-screen").classList.remove("hidden");
+
+    let audio = document.getElementById("audio");
+    audio.play();
+
+    startSnow();
+});
+
+// Snow Effect
+function startSnow() {
+    const canvas = document.getElementById("snow-canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let snowflakes = [];
+
+    function createSnowflakes() {
+        for (let i = 0; i < 100; i++) {
+            snowflakes.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 4 + 1,
+                speedY: Math.random() * 3 + 2,
+            });
+        }
+    }
+
+    function updateSnow() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+
+        for (let flake of snowflakes) {
+            flake.y += flake.speedY;
+            if (flake.y > canvas.height) flake.y = 0;
+
+            ctx.beginPath();
+            ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        requestAnimationFrame(updateSnow);
+    }
+
+    createSnowflakes();
+    updateSnow();
+}
