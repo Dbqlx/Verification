@@ -20,7 +20,7 @@ body {
 }
 
 #start-btn {
-    font-size: 40px;
+    font-size: 45px;
     color: white;
     background: none;
     border: none;
@@ -47,7 +47,7 @@ body {
 /* Bigger Verification Text */
 #verification-text {
     color: white;
-    font-size: 120px;
+    font-size: 100px;
     position: absolute;
     top: 10%;
 }
