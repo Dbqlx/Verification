@@ -9,12 +9,33 @@ document.getElementById("start-btn").addEventListener("click", function () {
     document.getElementById("verification-text").classList.remove("hidden");
     document.getElementById("verify-btn").classList.remove("hidden");
 
-    // Play music
+    // Play looping music
     let audio = document.getElementById("audio");
     audio.play();
 
     // Start Snow Effect
     startSnow();
+});
+
+document.getElementById("verify-btn").addEventListener("click", function () {
+    let btn = document.getElementById("verify-btn");
+    btn.classList.add("expand"); // Make the button bigger
+
+    let texts = ["Loading.", "Loading..", "Loading..."];
+    let counter = 0;
+
+    let interval = setInterval(() => {
+        btn.innerText = texts[counter % texts.length];
+        counter++;
+
+        if (counter === Math.floor(Math.random() * 3) + 3) { // Random between 3-5 sec
+            clearInterval(interval);
+            btn.innerText = "עשיתם אימות בהצלחה";
+            setTimeout(() => {
+                btn.classList.add("slide-down"); // Slide the button down
+            }, 5000);
+        }
+    }, 1000);
 });
 
 // Snow Effect
