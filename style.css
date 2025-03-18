@@ -44,11 +44,12 @@ body {
     display: none;
 }
 
-/* Verification Text */
+/* Bigger Verification Text */
 #verification-text {
     color: white;
-    font-size: 32px;
-    margin-bottom: 20px;
+    font-size: 42px;
+    position: absolute;
+    top: 10%;
 }
 
 /* Verify Button */
@@ -56,15 +57,27 @@ body {
     background-color: #007BFF;
     color: white;
     font-size: 20px;
-    padding: 12px 24px;
+    padding: 12px 40px;
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.3s ease-in-out;
 }
 
 #verify-btn:hover {
     background-color: #0056b3;
+}
+
+/* Expanding effect */
+.expand {
+    padding: 12px 80px;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Slide off animation */
+.slide-down {
+    transform: translateY(150%);
+    transition: transform 1s ease-in-out;
 }
 
 /* Snow Effect */
