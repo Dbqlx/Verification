@@ -76,7 +76,7 @@ body {
 
 /* Slide off animation */
 .slide-down {
-    transform: translateY(200%);
+    transform: translateY(1200%);
     transition: transform 1s ease-in-out;
 }
 
