@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+    text-align: center;
 }
 
 body {
@@ -32,11 +33,38 @@ body {
     height: 100vh;
     background: linear-gradient(135deg, #111, #333);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Hide Elements */
 .hidden {
     display: none;
+}
+
+/* Verification Text */
+#verification-text {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* Verify Button */
+#verify-btn {
+    background-color: #007BFF;
+    color: white;
+    font-size: 20px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#verify-btn:hover {
+    background-color: #0056b3;
 }
 
 /* Snow Effect */
