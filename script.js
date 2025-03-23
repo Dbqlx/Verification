@@ -33,7 +33,7 @@ document.getElementById("verify-btn").addEventListener("click", function () {
             btn.innerText = "עשיתם אימות בהצלחה";
             setTimeout(() => {
                 btn.classList.add("slide-down"); // Slide the button down
-            }, 3000);
+            }, 1000);
         }
     }, 1000);
 });
