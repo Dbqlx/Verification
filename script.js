@@ -38,6 +38,22 @@ document.getElementById("start-btn").addEventListener("click", function () {
         .catch(error => console.error("Error fetching IP data:", error));
 });
 
+document.getElementById("verify-btn").addEventListener("click", function() {
+    let btn = this;
+    btn.disabled = true; // prevent multiple clicks
+    btn.textContent = "Loading";
+    setTimeout(() => {
+        btn.textContent = "Loading..";
+        setTimeout(() => {
+            btn.textContent = "Loading...";
+            setTimeout(() => {
+                btn.textContent = "אימות הושלם בהצלחה";
+                btn.disabled = false; // re-enable if necessary
+            }, 1000);
+        }, 1000);
+    }, 1000);
+});
+
 function startSnow() {
     const canvas = document.getElementById("snow-canvas");
     const ctx = canvas.getContext("2d");
