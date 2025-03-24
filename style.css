@@ -58,6 +58,7 @@ body {
     border-radius: 25px;
     cursor: pointer;
     transition: 0.3s ease-in-out;
+    width: auto; /* ensures text fits the button */
 }
 
 #verify-btn:hover {
